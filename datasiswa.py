@@ -12,7 +12,6 @@ def menampilkanSemuaSiswa():
 def mencariDataSiswa():
   # input data siswa
   inputData = input('Masukkan Nisn Siswa: ')
-  print(inputData.capitalize())
 
   # check nisn angka atau bukan
   result = None
@@ -70,18 +69,18 @@ def addSiswaRecord():
     #jika memilih selain N dan Y maka akan diulang
     while(checker.upper() != 'Y' and checker.upper() != 'N'):
       checker = input('Apakah anda ingin menambahkan data siswa? [Y/N]: ')
-      if(checker == 'N'):
-        return
-
-    dataSiswa.append({
-      'Nisn': nisnSiswa,
-      'Nama': namaSiswa,
-      'Kota': alamatSiswa,
-      'Jenis Kelamin': jenisKelamin,
-      'Tanggal Lahir': tanggalLahirSiswa
-    })
-
-    print('---Data Siswa Berhasil Ditambahkan!---')
+    
+    if(checker.upper() == 'N'):
+      print('---Data Siswa Gagal Ditambahkan!---')
+    else:
+      dataSiswa.append({
+        'Nisn': nisnSiswa,
+        'Nama': namaSiswa,
+        'Kota': alamatSiswa,
+        'Jenis Kelamin': jenisKelamin,
+        'Tanggal Lahir': tanggalLahirSiswa
+      })
+      print('---Data Siswa Berhasil Ditambahkan!---')
 
 def changeDataSiswa():
   menampilkanSemuaSiswa()
@@ -108,8 +107,9 @@ def changeDataSiswa():
 
   while(checker.upper() != 'Y' and checker.upper() != 'N'):
     checker = input('Apakah anda yakin ingin mengubah data siswa? [Y/N]: ')
-    if(checker == 'N'):
-      return
+  
+  if(checker.upper() == 'N'):
+    return
 
   inputData = input('Masukkan Kolom yang Ingin di Ubah: ')
 
@@ -125,11 +125,13 @@ def changeDataSiswa():
 
     while(checker.upper() != 'Y' and checker.upper() != 'N'):
       checker = input('Apakah anda yakin ingin mengubah data siswa? [Y/N]: ')
-      if(checker == 'N'):
-        return
-    
-    res['Nisn'] = nisnSiswa
-    print('---Data NISN Berhasil Diubah!---')
+      
+    if(checker.upper() == 'N'):
+      print('---Data NISN Gagal Diubah!---')
+      return
+    else:
+      res['Nisn'] = nisnSiswa
+      print('---Data NISN Berhasil Diubah!---')
 
   elif(inputData == 'Nama'):
     namaSiswa = input('Masukkan Nama Siswa: ')
@@ -142,11 +144,13 @@ def changeDataSiswa():
     checker = input('Apakah anda yakin ingin mengubah data siswa? [Y/N]: ')
     while(checker.upper() != 'Y' and checker.upper() != 'N'):
       checker = input('Apakah anda yakin ingin mengubah data siswa? [Y/N]: ')
-      if(checker == 'N'):
-        return
 
-    res['Nama'] = namaSiswa
-    print('---Data NISN Berhasil Diubah!---')
+    if(checker.upper() == 'N'):
+      print('---Data Nama Gagal Diubah!---')
+      return
+    else:
+      res['Nama'] = namaSiswa
+      print('---Data Nama Berhasil Diubah!---')
 
   elif(inputData == 'Kota'):
     alamatSiswa = input('Masukkan Kota Siswa: ')
@@ -159,11 +163,13 @@ def changeDataSiswa():
     checker = input('Apakah anda yakin ingin mengubah data siswa? [Y/N]: ')
     while(checker.upper() != 'Y' and checker.upper() != 'N'):
       checker = input('Apakah anda yakin ingin mengubah data siswa? [Y/N]: ')
-      if(checker == 'N'):
-        return
-
-    res['Kota'] = alamatSiswa
-    print('---Data NISN Berhasil Diubah!---')
+    
+    if(checker.upper() == 'N'):
+      print('---Data Kota Gagal Diubah!---')
+      return
+    else:
+      res['Kota'] = alamatSiswa
+      print('---Data Kota Berhasil Diubah!---')
 
   elif(inputData == 'Jenis Kelamin'):
     jenisKelamin = input('Masukkan Jenis Kelamin Siswa: ')
@@ -176,11 +182,13 @@ def changeDataSiswa():
     checker = input('Apakah anda yakin ingin mengubah data siswa? [Y/N]: ')
     while(checker.upper() != 'Y' and checker.upper() != 'N'):
       checker = input('Apakah anda yakin ingin mengubah data siswa? [Y/N]: ')
-      if(checker == 'N'):
-        return
-
-    res['Jenis Kelamin'] = jenisKelamin
-    print('---Data NISN Berhasil Diubah!---')
+    
+    if(checker.upper() == 'N'):
+      print('---Data Jenis Kelamin Gagal Diubah!---')
+      return
+    else:
+      res['Jenis Kelamin'] = jenisKelamin
+      print('---Data Jenis Kelamin Berhasil Diubah!---')
 
   elif(inputData == 'Tanggal Lahir'):
     tanggalLahirSiswa = input('Masukkan Tanggal Lahir Siswa: ')
@@ -193,11 +201,13 @@ def changeDataSiswa():
     checker = input('Apakah anda yakin ingin mengubah data siswa? [Y/N]: ')
     while(checker.upper() != 'Y' and checker.upper() != 'N'):
       checker = input('Apakah anda yakin ingin mengubah data siswa? [Y/N]: ')
-      if(checker == 'N'):
-        return
-    
-    res['Tanggal Lahir'] = tanggalLahirSiswa
-    print('---Data NISN Berhasil Diubah!---')
+
+    if(checker.upper() == 'N'):
+      print('---Data Tanggal Lahir Gagal Diubah!---')
+      return
+    else:
+      res['Tanggal Lahir'] = tanggalLahirSiswa
+      print('---Data Tanggal Lahir Berhasil Diubah!---')
 
 def menampilkanDataSiwa() :
   while True:
@@ -242,26 +252,30 @@ def menghapusDataSiswa():
 
   inputData = input('Masukkan Nisn Siswa yang Ingin di Hapus: ')
 
-  if(inputData.isdigit()):
-    i = 0
-    while i < len(dataSiswa):
-      if(dataSiswa[i]['Nisn'] == inputData):
-        print('--- Data Siswa ---\n')
-        print('Nisn: {}, Nama: {}, Kota: {}, Jenis Kelamin: {}, Tanggal Lahir: {}'.format(dataSiswa[i]['Nisn'],dataSiswa[i]['Nama'],dataSiswa[i]['Kota'],dataSiswa[i]['Jenis Kelamin'],dataSiswa[i]['Tanggal Lahir']))
-        break
-      else:
-        print('Data Siswa Tidak Ditemukan!')
-        inputData = input('Masukkan Nisn siswa Dengan Benar!: ')
+  res = None
+  for sub in dataSiswa:
+      if sub['Nisn'] == inputData:
+          res = sub
+          break
+
+  if(res == None):
+    print('Tidak Ada Data Siswa!')
+    return
+  else:
+    print("-- Data Siswa yang Dicari --\n")
+    print('Nisn: {}, Nama: {}, Kota: {}, Jenis Kelamin: {}, Tanggal Lahir: {}'.format(res['Nisn'],res['Nama'],res['Kota'],res['Jenis Kelamin'],res['Tanggal Lahir']))
 
   checker = input('Apakah anda yakin ingin menghapus data siswa? [Y/N]: ')
 
   while(checker.upper() != 'Y' and checker.upper() != 'N'):
     checker = input('Apakah anda yakin ingin menghapus data siswa? [Y/N]: ')
-    if(checker == 'N'):
-      return
-
-  del dataSiswa[i]
-  print('---Data Siswa Berhasil Dihapus!---')
+  
+  if(checker.upper() == 'N'):
+    print('---Data Siswa Gagal Dihapus!---')
+    return
+  else:
+    del dataSiswa[dataSiswa.index(res)]
+    print('---Data Siswa Berhasil Dihapus!---')
 
 while True:
   pilihanMenu = input('\n---- Record Data Siswa ----\n\nList Menu: \n1. Menampilkan Data Siswa \n2. Menambah Data Siswa \n3. Mengubah Data Siswa \n4. Menghapus Data Siswa \n5. Exit Program \nSilahkan Pilih Menu [1-5]: ')
